@@ -8,7 +8,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-const languages = [
+const languages: ILanguage[] = [
   { language: "English", code: "EN" },
   { language: "Spanish", code: "ES" },
   { language: "French", code: "FR" },
@@ -32,7 +32,7 @@ export default function Languages() {
       <SelectContent>
         <SelectGroup>
           <SelectLabel>Languages</SelectLabel>
-          {languages.map((ln) => (
+          {languages.map((ln: ILanguage) => (
             <SelectItem value={ln.code.toLowerCase()} key={ln.language}>
               {ln.language} - {ln.code}
             </SelectItem>

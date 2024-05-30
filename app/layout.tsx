@@ -3,6 +3,8 @@ import { Montserrat as FontSans } from "next/font/google";
 import "@/styles/globals.css";
 import { cn } from "@/lib/utils";
 import { site } from "@/config";
+import Header from "@/components/shared/header";
+import { Web3Modal } from "@/context/web3modal";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -13,7 +15,7 @@ export const metadata: Metadata = {
   title: `${site.name} - ${site.short}`,
   description: site.desc,
   icons: {
-    icon: "/favicon.ico",
+    icon: "../public/svg/logo.svg",
   },
 };
 
@@ -23,14 +25,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressContentEditableWarning suppressHydrationWarning>
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
-        )}>
-        {children}
-      </body>
-    </html>
+    <Web3Modal>
+      <html lang="en" suppressContentEditableWarning suppressHydrationWarning>
+        <body
+          className={cn(
+            "min-h-screen bg-background font-sans antialiased flex flex-col",
+            fontSans.variable
+          )}>
+          <Header />
+          {children}
+        </body>
+      </html>
+    </Web3Modal>
   );
 }

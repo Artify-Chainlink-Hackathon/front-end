@@ -61,11 +61,11 @@ export default function Footer() {
             </h3>
 
             <ul className="flex flex-col gap-4">
-              {item.links.map((link) => (
+              {item.links.map((link, _id) => (
                 <Link
                   href="/"
                   className="text-base md:text-lg font-medium"
-                  key={link}>
+                  key={_id * Math.random()}>
                   {link}
                 </Link>
               ))}

@@ -40,28 +40,23 @@ export default function AboutSection() {
           </div>
         </div>
 
-        <div className="flex gap-4 w-max bg-red-500">
-          <div className="flex flex-col">
-            <div className="h-[42.51px]"></div>
-            <Image
-              src="/svg/gen1.svg"
-              alt="gen1"
-              width={461}
-              height={559}
-              priority
-              className="max-w-[461px] w-full h-[595px] object-cover"
-            />
+        <div className="flex gap-4">
+          <div className="flex flex-col items-center gap-5">
+            <div className="h-[42.51px] mb-10 opacity-0 pointer-events-none select-none">
+              <Image
+                src="/img/dalle.png"
+                alt="dalle"
+                width={156}
+                height={42.51}
+              />
+            </div>
+            <div className="rounded-2xl w-[361px] h-[459px] bg-red-500"></div>
           </div>
-          <div className="flex flex-col">
-            <Image
-              src="/svg/gen2.svg"
-              alt="gen2"
-              width={461}
-              height={559}
-              priority
-              className="max-w-[461px] w-full min-h-[595px] object-cover"
-            />
-            <div className="h-[42.51px]"></div>
+          <div className="flex flex-col items-center gap-5">
+            <div className="rounded-2xl w-[361px] h-[459px] bg-red-500"></div>
+            <div className="h-[43px] w-[156px] mt-10">
+              <Image src="/img/dalle.png" alt="dalle" width={156} height={43} />
+            </div>
           </div>
         </div>
       </Wrapper>
