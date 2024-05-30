@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { site } from "@/config";
 import Header from "@/components/shared/header";
 import { Web3Modal } from "@/context/web3modal";
+import Footer from "@/components/landing/footer";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -33,7 +34,8 @@ export default function RootLayout({
             fontSans.variable
           )}>
           <Header />
-          {children}
+          <main className="flex-1">{children}</main>
+          <Footer />
         </body>
       </html>
     </Web3Modal>

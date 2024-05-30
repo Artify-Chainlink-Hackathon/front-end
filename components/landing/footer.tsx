@@ -47,9 +47,9 @@ export default function Footer() {
         <div className="flex flex-col gap-4 max-w-[385px] w-full">
           <Logo />
 
-          <p className="text-base md:text-xl font-medium">{site.desc}</p>
+          <p className="text-sm md:text-base font-medium">{site.desc}</p>
 
-          <p className="text-base md:text-xl font-normal mt-4">
+          <p className="text-sm md:text-base font-normal mt-4">
             © {site.name} 2024
           </p>
         </div>
