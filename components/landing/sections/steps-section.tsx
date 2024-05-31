@@ -1,24 +1,29 @@
 import Wrapper from "@/components/shared/wrapper";
+import { actions } from "@/constants";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
+import CTA from "../cta";
 
-import { cn } from "@/lib/utils";
-import { actions } from "@/constants";
-
-export default function DashboardPage() {
+export default function StepsSection() {
   return (
     <div className="flex flex-1">
       <Wrapper className="flex flex-col items-center text-center py-16 md:py-20 relative">
-        <div className="relative w-full items-center justify-center flex flex-col mt-10 mb-20">
+        <div className="relative w-full items-center justify-center flex flex-col mt-20 mb-4">
           <span className="font-black text-primary absolute -top-[160px] text-[200px] opacity-[0.25] select-none">
-            YOUR NFT
+            SELL NFT
           </span>
           <h1 className="max-w-[1030px] w-full text-[64px] font-black leading-[72px] relative">
-            Create, Upload, Enhance: Your Gateway to NFT Artistry
+            3 simple steps to create and sell your NFTs
           </h1>
         </div>
+        <div className="flex items-center gap-3">
+          <span className="h-3 w-3 rounded-full bg-gradient-to-r from-[#B2EBF2] via-[#D1C4E9] to-[#F8BBD0]"></span>
+          <span className="h-3 w-16 rounded-full bg-gradient-to-r from-[#B2EBF2] via-[#D1C4E9] to-[#F8BBD0]"></span>
+        </div>
 
-        <div className="flex items-center justify-between w-full gap-6 mt-16">
+        <div className="flex items-center justify-between w-full gap-6 mt-32 mb-20">
           {actions.map((action) => (
             <>
               <Link
@@ -51,6 +56,8 @@ export default function DashboardPage() {
             </>
           ))}
         </div>
+
+        <CTA />
       </Wrapper>
     </div>
   );

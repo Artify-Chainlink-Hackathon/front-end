@@ -1,3 +1,4 @@
+import NFTCard from "@/components/shared/nft-card";
 import Wrapper from "@/components/shared/wrapper";
 import { site } from "@/config";
 import Image from "next/image";
@@ -6,9 +7,9 @@ import React from "react";
 export default function AboutSection() {
   return (
     <div className="my-10 w-full">
-      <Wrapper className="flex gap-6 justify-between">
+      <Wrapper className="flex gap-6 items-center justify-between">
         <div className="flex flex-col">
-          <h1 className="text- 4xl md:text-5xl lg:text-6xl xl:text-7xl font-black w-max">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black w-max">
             About{" "}
             <span className="uppercase text-transparent bg-clip-text bg-gradient-to-r from-[#B2EBF2] via-[#D1C4E9] to-[#F8BBD0]">
               {site.name}
@@ -50,10 +51,16 @@ export default function AboutSection() {
                 height={42.51}
               />
             </div>
-            <div className="rounded-2xl w-[361px] h-[459px] bg-red-500"></div>
+            <NFTCard
+              nftOwner="0xC0E11e7674B3267175569e1c42b85bB5554aFEB4"
+              img="/img/nft2.jpeg"
+            />
           </div>
           <div className="flex flex-col items-center gap-5">
-            <div className="rounded-2xl w-[361px] h-[459px] bg-red-500"></div>
+            <NFTCard
+              nftOwner="0xC0E11e7674B3267175569e1c42b85bB5554aFEB4"
+              img="/img/nft1.jpeg"
+            />
             <div className="h-[43px] w-[156px] mt-10">
               <Image src="/img/dalle.png" alt="dalle" width={156} height={43} />
             </div>
