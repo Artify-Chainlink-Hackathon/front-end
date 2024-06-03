@@ -16,28 +16,35 @@ import {
 } from "@/components/ui/form";
 
 const formSchema = z.object({
-  prompt: z.string().min(2).max(50),
+  prompt: z.string().min(2).max(3000),
 });
 
 import Wrapper from "@/components/shared/wrapper";
 import { Textarea } from "@/components/ui/textarea";
 import Image from "next/image";
 import { HeartFilledIcon } from "@radix-ui/react-icons";
+import { useGenerateImageFromPrompt } from "@/hooks/contract";
+import { Loader } from "lucide-react";
 
 export default function PromptPage() {
+  const { generateImage, isGenerating, result } = useGenerateImageFromPrompt();
+
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      prompt: "",
+      prompt: "A futuristic cyberpunk city filled with intelligent cats",
     },
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      const data = await generateImage(values);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -62,7 +69,8 @@ export default function PromptPage() {
                     <FormLabel>Prompt</FormLabel>
                     <FormControl className="w-full h-[242px]">
                       <Textarea
-                        placeholder="shadcn"
+                        disabled={isGenerating}
+                        placeholder="A futuristic cyberpunk city filled with intelligent cats"
                         className="resize-none text-lg"
                         {...field}
                       />
@@ -71,8 +79,19 @@ export default function PromptPage() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-max" variant="outline">
-                Generate NFT
+              <Button
+                type="submit"
+                className="w-max"
+                variant="outline"
+                disabled={isGenerating}>
+                {isGenerating ? (
+                  <>
+                    <Loader className="animate-spin mr-2" size={16} />{" "}
+                    Generating
+                  </>
+                ) : (
+                  "Generate NFT"
+                )}
               </Button>
             </form>
           </Form>

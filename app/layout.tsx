@@ -6,6 +6,7 @@ import { site } from "@/config";
 import Header from "@/components/shared/header";
 import { Web3Modal } from "@/context/web3modal";
 import Footer from "@/components/landing/footer";
+import { Toaster } from "@/components/ui/sonner";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   title: `${site.name} - ${site.short}`,
   description: site.desc,
   icons: {
-    icon: "../public/svg/logo.svg",
+    icon: "/svg/logo.svg",
   },
 };
 
@@ -33,6 +34,7 @@ export default function RootLayout({
             "min-h-screen bg-background font-sans antialiased flex flex-col",
             fontSans.variable
           )}>
+          <Toaster richColors />
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />

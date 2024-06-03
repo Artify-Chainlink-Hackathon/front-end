@@ -8,14 +8,14 @@ const projectId = process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID || "";
 
 if (!projectId) throw new Error("project ID not found");
 
-export const SEPOLIA_CHAIN_ID: number = 11155111;
+export const AVAX_CHAIN_ID: number = 43113;
 
-const ethereumSepolia = {
-  chainId: SEPOLIA_CHAIN_ID,
-  name: "Ethereum Sepolia",
-  currency: "ETH",
-  explorerUrl: "https://sepolia.etherscan.io/",
-  rpcUrl: process.env.NEXT_PUBLIC_SEPOLIA_RPC_URL as string,
+const avaxChain = {
+  chainId: AVAX_CHAIN_ID,
+  name: "Avalanche Fuji testnet",
+  currency: "AVAX",
+  explorerUrl: "https://testnet.snowtrace.io",
+  rpcUrl: "https://api.avax-test.network/ext/bc/C/rpc",
 };
 
 const metadata: any = {
@@ -35,7 +35,7 @@ const ethersConfig = defaultConfig({
 // 5. Create a Web3Modal instance
 createWeb3Modal({
   ethersConfig,
-  chains: [ethereumSepolia],
+  chains: [avaxChain],
   projectId,
   enableAnalytics: true,
   enableOnramp: true,

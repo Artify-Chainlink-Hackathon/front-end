@@ -12,11 +12,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useRouter } from "next/navigation";
-import { useDisconnect } from "@web3modal/ethers/react";
+import { useDisconnect, useWeb3ModalAccount } from "@web3modal/ethers/react";
 
 export function Menu() {
   const router = useRouter();
   const { disconnect } = useDisconnect();
+  const { address } = useWeb3ModalAccount();
 
   return (
     <DropdownMenu>
@@ -33,7 +34,7 @@ export function Menu() {
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem onClick={() => router.push("/profile")}>
+          <DropdownMenuItem onClick={() => router.push(`/profile/${address}`)}>
             <User className="mr-2 h-4 w-4" />
             <span>Profile</span>
             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
